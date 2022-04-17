@@ -4,11 +4,16 @@
     "packages": [
       "api",
       "web",
+      "next-app",
       "packages/*"
     ]
   },
+  "scripts": {
+    "dev": "concurrently --kill-others \"npx next dev ./next-app -p 3000\" \"yarn rw dev\""
+  },
   "devDependencies": {
-    "@redwoodjs/core": "1.0.2"
+    "@redwoodjs/core": "1.0.2",
+    "concurrently": "^7.1.0"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config",

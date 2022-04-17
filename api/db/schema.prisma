@@ -8,11 +8,55 @@ generator client {
   binaryTargets = "native"
 }
 
-// Define your own datamodels here and run `yarn redwood prisma migrate dev`
-// to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Wizard {
+  id        String           @id @default(uuid())
+  firstName String?          @unique
+  lastName  String
+  classes   WizardsClasses[]
+  house     House            @relation(fields: [houseId], references: [id])
+  houseId   String
+}
+
+model House {
+  id           String   @id @default(uuid())
+  name         String
+  houseColours String?
+  animal       String?
+  founder      String?
+  ghost        String?
+  wizards      Wizard[]
+}
+
+model Class {
+  id          String           @id @default(uuid())
+  wizards     WizardsClasses[]
+  spells      Spell[]
+  ingredients Ingredients[]
+}
+
+model WizardsClasses {
+  wizard   Wizard @relation(fields: [wizardId], references: [id])
+  wizardId String
+  class    Class  @relation(fields: [classId], references: [id])
+  classId  String
+
+  @@id([wizardId, classId])
+}
+
+model Spell {
+  id          String  @id @default(uuid())
+  name        String
+  incantation String
+  effect      String
+  light       String
+  type        String
+  class       Class?  @relation(fields: [classId], references: [id])
+  classId     String?
+}
+
+model Ingredients {
+  id      String  @id @default(uuid())
+  name    String
+  class   Class?  @relation(fields: [classId], references: [id])
+  classId String?
 }
