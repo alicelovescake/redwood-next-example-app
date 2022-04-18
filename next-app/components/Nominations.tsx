@@ -1,10 +1,11 @@
-import MovieCard from "../components/MovieCard";
-import Banner from "../components/Banner";
-import SharedNominations from "../components/SharedNominations";
-import { useNominations } from "../context/NominationsContext";
+import MovieCard from '../components/MovieCard'
+import Banner from '../components/Banner'
+import SharedNominations from '../components/SharedNominations'
+import { useNominations } from '../context/NominationsContext'
+import type { Prisma } from '@prisma/client'
 
 export default function Nominations() {
-  const { nominations } = useNominations();
+  const { nominations } = useNominations()
   return (
     <>
       <SharedNominations />
@@ -17,5 +18,5 @@ export default function Nominations() {
         ))}
       </div>
     </>
-  );
+  )
 }

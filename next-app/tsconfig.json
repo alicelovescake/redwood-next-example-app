@@ -15,8 +15,14 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
+    "rootDirs": [
+      "../next-app",
+      "../api/src",
+      "../.redwood/types/mirror/api/src"
+    ],
     "paths": {
+      "types/*": ["./types/*", "../types/*"],
       "@/pages/*": ["pages/*"],
       "@/public/*": ["public/*"],
     }

@@ -1,40 +1,54 @@
 import type { Prisma } from '@prisma/client'
 import { db } from 'api/src/lib/db'
+import fs from 'fs'
 
-export default async () => {
+const seedHouses = async () => {
+  const housesData = fs.readFileSync('./data/houses.json', 'utf8')
+  const houses = JSON.parse(housesData)
+  console.log(`Seeding ${houses.length} houses into the database ...`)
   try {
-    //
-    // Manually seed via `yarn rw prisma db seed`
-    // Seeds automatically with `yarn rw prisma migrate dev` and `yarn rw prisma migrate reset`
-    //
-    // Update "const data = []" to match your data model and seeding needs
-    //
-    const data: Prisma.UserExampleCreateArgs['data'][] = [
-      // To try this example data with the UserExample model in schema.prisma,
-      // uncomment the lines below and run 'yarn rw prisma migrate dev'
-      //
-      // { name: 'alice', email: 'alice@example.com' },
-      // { name: 'mark', email: 'mark@example.com' },
-      // { name: 'jackie', email: 'jackie@example.com' },
-      // { name: 'bob', email: 'bob@example.com' },
-    ]
-    console.log(
-      "\nUsing the default './scripts/seed.{js,ts}' template\nEdit the file to add seed data\n"
-    )
+    const dbHouses: Prisma.HouseCreateInput[] = houses.map((house) => ({
+      ...house,
+    }))
 
-    // Note: if using PostgreSQL, using `createMany` to insert multiple records is much faster
-    // @see: https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#createmany
-    Promise.all(
-      //
-      // Change to match your data model and seeding needs
-      //
-      data.map(async (data: Prisma.UserExampleCreateArgs['data']) => {
-        const record = await db.userExample.create({ data })
-        console.log(record)
-      })
-    )
+    dbHouses.map(async (house) => {
+      const houseCreated = await db.house.create({ data: house })
+      console.log(houseCreated)
+    })
   } catch (error) {
     console.warn('Please define your seed data.')
     console.error(error)
+  }
+}
+
+const seedWizards = async () => {
+  const wizardsData = fs.readFileSync('./data/wizards.json', 'utf8')
+  const wizards = JSON.parse(wizardsData)
+  console.log(`Seeding ${wizards.length} wizards into the database ...`)
+  try {
+    const dbWizards: Prisma.WizardCreateInput[] = wizards.map((wizard) => ({
+      ...wizard,
+    }))
+
+    dbWizards.map(async (wizard) => {
+      const wizardCreated = await db.wizard.create({ data: wizard })
+      console.log(wizardCreated)
+    })
+  } catch (error) {
+    console.warn('Please define your seed data.')
+    console.error(error)
+  }
+}
+
+export default async () => {
+  const housesCount = await db.house.count()
+  const wizardCount = await db.wizard.count()
+
+  if (!housesCount) {
+    await seedHouses()
+  }
+
+  if (!wizardCount) {
+    await seedWizards()
   }
 }

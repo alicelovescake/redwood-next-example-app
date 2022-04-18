@@ -1,0 +1,47 @@
+[
+	{
+		"id": "118e7366-1c65-4275-8121-8f6c553e5783",
+		"firstName": "Fred",
+		"lastName": "Weasley"
+	},
+	{
+		"id": "30bd3b76-57f0-4a25-be3b-41bbeccae927",
+		"firstName": "Fleamont",
+		"lastName": "Potter"
+	},
+	{
+		"id": "913407b0-9c11-4002-a080-6874436c3a93",
+		"firstName": "Nicolas",
+		"lastName": "Flamel"
+	},
+	{
+		"id": "9f03933e-232d-4bb6-8e74-4c5f97e7f273",
+		"firstName": "George",
+		"lastName": "Weasley"
+	},
+	{
+		"id": "dafacc67-40ab-4087-ac31-1f34a2244a8a",
+		"firstName": "Harry",
+		"lastName": "Potter"
+	},
+	{
+		"id": "f418eebe-a58c-46db-8739-a3e27993753c",
+		"firstName": "Draco",
+		"lastName": "Malfoy"
+	},
+	{
+		"id": "f4b9e44f-ea3e-42d1-9895-7aacc0169d02",
+		"firstName": "Tom",
+		"lastName": "Riddle"
+	},
+	{
+		"id": "f86280b1-faa6-44fd-b8a9-f7a4556f8d20",
+		"firstName": "Harmoine",
+		"lastName": "Granger"
+	},
+  {
+		"id": "f86280b1-faa6-44fd-b8a9-f7a4556f8d21",
+		"firstName": "Ron",
+		"lastName": "Weasley"
+	}
+]
