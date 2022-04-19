@@ -1,32 +1,10 @@
 export const schema = gql`
-  type Ingredients {
-    id: String!
-    name: String!
-  }
-
-  type Spell {
-    id: String!
-    name: String!
-    incantation: String!
-    effect: String!
-    light: String!
-    type: String!
-    classroom: Classroom
-  }
-
-  type WizardsClasses {
-    wizard: Wizard
-    wizardId: String
-    classroom: Classroom
-    classroomId: String
-  }
-
   type Classroom {
     id: String!
     name: String!
-    wizards: [WizardsClasses]!
+    wizards: [Wizard]!
     spells: [Spell]!
-    ingredients: [Ingredients]!
+    ingredients: [Ingredient]!
   }
 
   type Query {

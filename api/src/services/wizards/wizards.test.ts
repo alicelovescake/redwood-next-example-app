@@ -28,10 +28,10 @@ describe('wizards', () => {
 
   scenario('creates a wizard', async () => {
     const result = await createWizard({
-      input: { firstName: 'String9210076', lastName: 'String' },
+      input: { firstName: 'String8056208', lastName: 'String' },
     })
 
-    expect(result.firstName).toEqual('String9210076')
+    expect(result.firstName).toEqual('String8056208')
     expect(result.lastName).toEqual('String')
   })
 
@@ -39,10 +39,10 @@ describe('wizards', () => {
     const original = await wizard({ id: scenario.wizard.one.id })
     const result = await updateWizard({
       id: original.id,
-      input: { firstName: 'String55605872' },
+      input: { firstName: 'String83515112' },
     })
 
-    expect(result.firstName).toEqual('String55605872')
+    expect(result.firstName).toEqual('String83515112')
   })
 
   scenario('deletes a wizard', async (scenario: StandardScenario) => {

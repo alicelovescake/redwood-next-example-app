@@ -9,11 +9,11 @@ generator client {
 }
 
 model Wizard {
-  id        String           @id @default(uuid())
-  firstName String           @unique
+  id        String      @id @default(uuid())
+  firstName String      @unique
   lastName  String
-  classes   WizardsClasses[]
-  house     House?           @relation(fields: [houseId], references: [id])
+  classes   Classroom[]
+  house     House?      @relation(fields: [houseId], references: [id])
   houseId   String?
 }
 
@@ -29,20 +29,11 @@ model House {
 }
 
 model Classroom {
-  id          String           @id @default(uuid())
+  id          String       @id @default(uuid())
   name        String
-  wizards     WizardsClasses[]
+  wizards     Wizard[]
   spells      Spell[]
-  ingredients Ingredients[]
-}
-
-model WizardsClasses {
-  wizard      Wizard?    @relation(fields: [wizardId], references: [id])
-  wizardId    String
-  classroom   Classroom? @relation(fields: [classroomId], references: [id])
-  classroomId String
-
-  @@id([wizardId, classroomId])
+  ingredients Ingredient[]
 }
 
 model Spell {
@@ -56,7 +47,7 @@ model Spell {
   classroomId String?
 }
 
-model Ingredients {
+model Ingredient {
   id          String     @id @default(uuid())
   name        String
   classroom   Classroom? @relation(fields: [classroomId], references: [id])

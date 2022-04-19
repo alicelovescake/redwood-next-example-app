@@ -3,7 +3,7 @@ export const schema = gql`
     id: String!
     firstName: String!
     lastName: String!
-    classes: [WizardsClasses]!
+    classes: [Classroom]!
     house: House
     houseId: String
   }
