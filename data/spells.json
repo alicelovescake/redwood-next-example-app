@@ -1,0 +1,106 @@
+[
+	{
+		"id": "fbd3cb46-c174-4843-a07e-fd83545dce58",
+		"name": "Opening Charm",
+		"incantation": "Aberto",
+		"effect": "Opens doors",
+		"type": "Charm",
+		"light": "Blue"
+	},
+	{
+		"id": "5eb39a99-72cd-4d40-b4aa-b0f5dd195100",
+		"name": "Water-Making Spell",
+		"incantation": "Aguamenti",
+		"effect": "Conjures water",
+		"type": "Conjuration",
+		"light": "IcyBlue"
+	},
+	{
+		"id": "ab3a8dfe-1e56-4706-a20d-26afee011ed7",
+		"name": "Alarte Ascendare",
+		"incantation": "Alarte Ascendare",
+		"effect": "Rockets target upward",
+		"type": "Charm",
+		"light": "Red"
+	},
+	{
+		"id": "c6898622-b914-4609-b3a0-8659ed2ca08a",
+		"name": "Animagus Spell",
+		"incantation": "Amato Animo Animato Animagus",
+		"effect": "Used as part of the ritual to become an Animagus",
+		"type": "Transfiguration",
+		"light": "Gold"
+	},
+	{
+		"id": "0a11bbf5-702c-45ab-bdd6-20debf00ed39",
+		"name": "Anteoculatia",
+		"incantation": "Anteoculatia",
+		"effect": "Grows antlers on head",
+		"type": "DarkCharm",
+		"light": "Red"
+	},
+	{
+		"id": "9963acbe-ad74-4ef5-9dd0-34ed5689c063",
+		"name": "Anti-Cheating Spell",
+		"incantation": "",
+		"effect": "Prevents cheating",
+		"type": "Charm",
+		"light": "Purple"
+	},
+	{
+		"id": "3ba417ce-8165-464d-9f29-daf23da1b2bc",
+		"name": "Albus Dumbledore's forceful spell",
+		"incantation": "",
+		"effect": "Great force",
+		"type": "Spell",
+		"light": "Transparent"
+	},
+	{
+		"id": "aede8168-528c-4888-8c14-a38b6c5e6a97",
+		"name": "Unlocking Charm",
+		"incantation": "Alohomora",
+		"effect": "Unlocks objects",
+		"type": "Charm",
+		"light": "Transparent"
+	},
+	{
+		"id": "7930c98d-f993-41e6-875e-a26d7ee56c55",
+		"name": "Anapneo",
+		"incantation": "Anapneo",
+		"effect": "Clears target's airway",
+		"type": "HealingSpell",
+		"light": "Transparent"
+	},
+	{
+		"id": "e840eec1-38fa-4231-9488-c752c62c53a9",
+		"name": "Anti-Disapparition Jinx",
+		"incantation": "",
+		"effect": "Prevents Disapparition within a certain area",
+		"type": "Jinx",
+		"light": "None"
+	},
+	{
+		"id": "81745d77-862a-458d-b15d-7fa3f63710e1",
+		"name": "Anti-intruder jinx",
+		"incantation": "",
+		"effect": "Repels intruders",
+		"type": "Jinx",
+		"light": "None"
+	},
+	{
+		"id": "f5d07f14-385c-4e6e-838f-bebaac2d8112",
+		"name": "Antonin Dolohov's curse",
+		"incantation": "",
+		"effect": "Injuries capable of killing",
+		"type": "Curse",
+		"light": "Purple"
+	},
+	{
+		"id": "3bd4db03-e4db-478e-9224-c219201e12b1",
+		"name": "Revealing Charm",
+		"incantation": "Aparecium",
+		"effect": "Reveals hidden writing",
+		"type": "Charm",
+		"light": "White"
+	}
+]

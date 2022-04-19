@@ -28,36 +28,37 @@ model House {
   wizards      Wizard[]
 }
 
-model Class {
+model Classroom {
   id          String           @id @default(uuid())
+  name        String
   wizards     WizardsClasses[]
   spells      Spell[]
   ingredients Ingredients[]
 }
 
 model WizardsClasses {
-  wizard   Wizard? @relation(fields: [wizardId], references: [id])
-  wizardId String
-  class    Class?  @relation(fields: [classId], references: [id])
-  classId  String
+  wizard      Wizard?    @relation(fields: [wizardId], references: [id])
+  wizardId    String
+  classroom   Classroom? @relation(fields: [classroomId], references: [id])
+  classroomId String
 
-  @@id([wizardId, classId])
+  @@id([wizardId, classroomId])
 }
 
 model Spell {
-  id          String  @id @default(uuid())
+  id          String     @id @default(uuid())
   name        String
   incantation String
   effect      String
   light       String
   type        String
-  class       Class?  @relation(fields: [classId], references: [id])
-  classId     String?
+  classroom   Classroom? @relation(fields: [classroomId], references: [id])
+  classroomId String?
 }
 
 model Ingredients {
-  id      String  @id @default(uuid())
-  name    String
-  class   Class?  @relation(fields: [classId], references: [id])
-  classId String?
+  id          String     @id @default(uuid())
+  name        String
+  classroom   Classroom? @relation(fields: [classroomId], references: [id])
+  classroomId String?
 }
