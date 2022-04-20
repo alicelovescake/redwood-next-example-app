@@ -1,4 +1,4 @@
-import * as todos from '../graphql/todos'
+import * as todos from '../graphql-client/todos'
 
 type Todo = {
   id: number

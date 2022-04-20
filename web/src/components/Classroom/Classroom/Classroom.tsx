@@ -1,8 +1,7 @@
-import humanize from 'humanize-string'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { Link, routes, navigate } from '@redwoodjs/router'
+import { FindClassroomById } from 'types/graphql'
 
 const DELETE_CLASSROOM_MUTATION = gql`
   mutation DeleteClassroomMutation($id: String!) {
@@ -12,40 +11,11 @@ const DELETE_CLASSROOM_MUTATION = gql`
   }
 `
 
-const formatEnum = (values: string | string[] | null | undefined) => {
-  if (values) {
-    if (Array.isArray(values)) {
-      const humanizedValues = values.map((value) => humanize(value))
-      return humanizedValues.join(', ')
-    } else {
-      return humanize(values as string)
-    }
-  }
-}
-
-const jsonDisplay = (obj) => {
-  return (
-    <pre>
-      <code>{JSON.stringify(obj, null, 2)}</code>
-    </pre>
-  )
-}
-
-const timeTag = (datetime) => {
-  return (
-    datetime && (
-      <time dateTime={datetime} title={datetime}>
-        {new Date(datetime).toUTCString()}
-      </time>
-    )
-  )
-}
-
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
-}
-
-const Classroom = ({ classroom }) => {
+const Classroom = ({
+  classroom,
+}: {
+  classroom: FindClassroomById['classroom']
+}) => {
   const [deleteClassroom] = useMutation(DELETE_CLASSROOM_MUTATION, {
     onCompleted: () => {
       toast.success('Classroom deleted')
@@ -66,16 +36,32 @@ const Classroom = ({ classroom }) => {
     <>
       <div className="rw-segment">
         <header className="rw-segment-header">
-          <h2 className="rw-heading rw-heading-secondary">Classroom {classroom.id} Detail</h2>
+          <h2 className="rw-heading rw-heading-secondary">Class Detail</h2>
         </header>
         <table className="rw-table">
           <tbody>
             <tr>
-              <th>Id</th>
-              <td>{classroom.id}</td>
-            </tr><tr>
               <th>Name</th>
               <td>{classroom.name}</td>
+            </tr>
+            <tr>
+              <th># of Wizards Enrolled</th>
+              <td>{classroom.wizards?.length ?? 0}</td>
+            </tr>
+            <tr>
+              <th>Spells Covered In Class</th>
+              <td>
+                {classroom.spells?.map((spell) => spell.name).join(', ') ??
+                  'no spells set yet'}
+              </td>
+            </tr>
+            <tr>
+              <th>Ingredients to prep</th>
+              <td>
+                {classroom.ingredients
+                  ?.map((ingredient) => ingredient.name)
+                  .join(', ') ?? 'no ingredients set yet'}
+              </td>
             </tr>
           </tbody>
         </table>

@@ -1,5 +1,3 @@
-import humanize from 'humanize-string'
-
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { Link, routes } from '@redwoodjs/router'
@@ -16,41 +14,12 @@ const DELETE_CLASSROOM_MUTATION = gql`
 
 const MAX_STRING_LENGTH = 150
 
-const formatEnum = (values: string | string[] | null | undefined) => {
-  if (values) {
-    if (Array.isArray(values)) {
-      const humanizedValues = values.map((value) => humanize(value))
-      return humanizedValues.join(', ')
-    } else {
-      return humanize(values as string)
-    }
-  }
-}
-
 const truncate = (text) => {
   let output = text
   if (text && text.length > MAX_STRING_LENGTH) {
     output = output.substring(0, MAX_STRING_LENGTH) + '...'
   }
   return output
-}
-
-const jsonTruncate = (obj) => {
-  return truncate(JSON.stringify(obj, null, 2))
-}
-
-const timeTag = (datetime) => {
-  return (
-    datetime && (
-      <time dateTime={datetime} title={datetime}>
-        {new Date(datetime).toUTCString()}
-      </time>
-    )
-  )
-}
-
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
 }
 
 const ClassroomsList = ({ classrooms }) => {
@@ -79,7 +48,6 @@ const ClassroomsList = ({ classrooms }) => {
       <table className="rw-table">
         <thead>
           <tr>
-            <th>Id</th>
             <th>Name</th>
             <th>&nbsp;</th>
           </tr>
@@ -87,27 +55,26 @@ const ClassroomsList = ({ classrooms }) => {
         <tbody>
           {classrooms.map((classroom) => (
             <tr key={classroom.id}>
-              <td>{truncate(classroom.id)}</td>
               <td>{truncate(classroom.name)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link
                     to={routes.classroom({ id: classroom.id })}
-                    title={'Show classroom ' + classroom.id + ' detail'}
+                    title={'Show class ' + classroom.id + ' detail'}
                     className="rw-button rw-button-small"
                   >
                     Show
                   </Link>
                   <Link
                     to={routes.editClassroom({ id: classroom.id })}
-                    title={'Edit classroom ' + classroom.id}
+                    title={'Edit class ' + classroom.id}
                     className="rw-button rw-button-small rw-button-blue"
                   >
                     Edit
                   </Link>
                   <button
                     type="button"
-                    title={'Delete classroom ' + classroom.id}
+                    title={'Delete class ' + classroom.id}
                     className="rw-button rw-button-small rw-button-red"
                     onClick={() => onDeleteClick(classroom.id)}
                   >

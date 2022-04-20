@@ -12,15 +12,18 @@ const CREATE_CLASSROOM_MUTATION = gql`
 `
 
 const NewClassroom = () => {
-  const [createClassroom, { loading, error }] = useMutation(CREATE_CLASSROOM_MUTATION, {
-    onCompleted: () => {
-      toast.success('Classroom created')
-      navigate(routes.classrooms())
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-  })
+  const [createClassroom, { loading, error }] = useMutation(
+    CREATE_CLASSROOM_MUTATION,
+    {
+      onCompleted: () => {
+        toast.success('Classroom created')
+        navigate(routes.classrooms())
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      },
+    }
+  )
 
   const onSave = (input) => {
     createClassroom({ variables: { input } })
@@ -29,7 +32,7 @@ const NewClassroom = () => {
   return (
     <div className="rw-segment">
       <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Classroom</h2>
+        <h2 className="rw-heading rw-heading-secondary">New Class</h2>
       </header>
       <div className="rw-segment-main">
         <ClassroomForm onSave={onSave} loading={loading} error={error} />

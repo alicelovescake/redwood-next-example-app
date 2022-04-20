@@ -10,6 +10,11 @@ export const classrooms = () => {
 export const classroom = ({ id }: Prisma.ClassroomWhereUniqueInput) => {
   return db.classroom.findUnique({
     where: { id },
+    include: {
+      wizards: true,
+      ingredients: true,
+      spells: true,
+    },
   })
 }
 

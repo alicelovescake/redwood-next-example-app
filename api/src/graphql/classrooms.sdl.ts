@@ -8,8 +8,8 @@ export const schema = gql`
   }
 
   type Query {
-    classrooms: [Classroom!]! @requireAuth
-    classroom(id: String!): Classroom @requireAuth
+    classrooms: [Classroom!]! @skipAuth
+    classroom(id: String!): Classroom @skipAuth
   }
 
   input CreateClassroomInput {
@@ -21,9 +21,9 @@ export const schema = gql`
   }
 
   type Mutation {
-    createClassroom(input: CreateClassroomInput!): Classroom! @requireAuth
+    createClassroom(input: CreateClassroomInput!): Classroom! @skipAuth
     updateClassroom(id: String!, input: UpdateClassroomInput!): Classroom!
-      @requireAuth
-    deleteClassroom(id: String!): Classroom! @requireAuth
+      @skipAuth
+    deleteClassroom(id: String!): Classroom! @skipAuth
   }
 `

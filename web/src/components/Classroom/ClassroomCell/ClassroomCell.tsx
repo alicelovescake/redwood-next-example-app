@@ -8,6 +8,15 @@ export const QUERY = gql`
     classroom: classroom(id: $id) {
       id
       name
+      ingredients {
+        name
+      }
+      spells {
+        name
+      }
+      wizards {
+        firstName
+      }
     }
   }
 `

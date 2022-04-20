@@ -11,18 +11,12 @@ const ClassroomsLayout = ({ children }: ClassroomLayoutProps) => {
       <Toaster toastOptions={{ className: 'rw-toast', duration: 6000 }} />
       <header className="rw-header">
         <h1 className="rw-heading rw-heading-primary">
-          <Link
-            to={routes.classrooms()}
-            className="rw-link"
-          >
-            Classrooms
+          <Link to={routes.classrooms()} className="rw-link">
+            Class List
           </Link>
         </h1>
-        <Link
-          to={routes.newClassroom()}
-          className="rw-button rw-button-green"
-        >
-          <div className="rw-button-icon">+</div> New Classroom
+        <Link to={routes.newClassroom()} className="rw-button rw-button-green">
+          <div className="rw-button-icon">+</div> New Class
         </Link>
       </header>
       <main className="rw-main">{children}</main>

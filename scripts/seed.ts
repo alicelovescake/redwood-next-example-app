@@ -25,7 +25,7 @@ export default async () => {
   const housesCount = await db.house.count()
   const wizardsCount = await db.wizard.count()
   const spellsCount = await db.spell.count()
-  const ingredientsCount = await db.ingredients.count()
+  const ingredientsCount = await db.ingredient.count()
 
   if (!housesCount) {
     await seedModel('house')

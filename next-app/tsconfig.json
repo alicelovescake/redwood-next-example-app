@@ -17,15 +17,17 @@
     "incremental": true,
     "baseUrl": "./",
     "rootDirs": [
-      "../next-app",
+      "next-app",
       "../api/src",
-      "../.redwood/types/mirror/api/src"
+      "../.redwood/types/mirror/api/src/*",
+      "../.redwood/types/mirror/web/src/*",
     ],
     "paths": {
-      "types/*": ["./types/*", "../types/*"],
+      "types/*": ["../web/types/*"],
       "@/pages/*": ["pages/*"],
       "@/public/*": ["public/*"],
-    }
+    },
+    "typeRoots": ["../node_modules/@types", "./node_modules/@types"],
   },
 
   "exclude": ["**/node_modules", "**/.*/", ".next", ".out"],

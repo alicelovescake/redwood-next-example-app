@@ -12,11 +12,38 @@ export const QUERY = gql`
     classroom: classroom(id: $id) {
       id
       name
+      ingredients {
+        id
+        name
+      }
+      spells {
+        id
+        name
+      }
+      wizards {
+        id
+        firstName
+      }
+    }
+    ingredients: ingredients {
+      id
+      name
+    }
+    spells: spells {
+      id
+      name
+    }
+    wizards: wizards {
+      id
+      firstName
     }
   }
 `
 const UPDATE_CLASSROOM_MUTATION = gql`
-  mutation UpdateClassroomMutation($id: String!, $input: UpdateClassroomInput!) {
+  mutation UpdateClassroomMutation(
+    $id: String!
+    $input: UpdateClassroomInput!
+  ) {
     updateClassroom(id: $id, input: $input) {
       id
       name
@@ -30,16 +57,20 @@ export const Failure = ({ error }: CellFailureProps) => (
   <div className="rw-cell-error">{error.message}</div>
 )
 
-export const Success = ({ classroom }: CellSuccessProps<EditClassroomById>) => {
-  const [updateClassroom, { loading, error }] = useMutation(UPDATE_CLASSROOM_MUTATION, {
-    onCompleted: () => {
-      toast.success('Classroom updated')
-      navigate(routes.classrooms())
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-  })
+export const Success = (data: CellSuccessProps<EditClassroomById>) => {
+  console.log({ data })
+  const [updateClassroom, { loading, error }] = useMutation(
+    UPDATE_CLASSROOM_MUTATION,
+    {
+      onCompleted: () => {
+        toast.success('Class updated')
+        navigate(routes.classrooms())
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      },
+    }
+  )
 
   const onSave = (input, id) => {
     updateClassroom({ variables: { id, input } })
@@ -48,10 +79,15 @@ export const Success = ({ classroom }: CellSuccessProps<EditClassroomById>) => {
   return (
     <div className="rw-segment">
       <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">Edit Classroom {classroom.id}</h2>
+        <h2 className="rw-heading rw-heading-secondary">Edit Class</h2>
       </header>
       <div className="rw-segment-main">
-        <ClassroomForm classroom={classroom} onSave={onSave} error={error} loading={loading} />
+        <ClassroomForm
+          data={data}
+          onSave={onSave}
+          error={error}
+          loading={loading}
+        />
       </div>
     </div>
   )
