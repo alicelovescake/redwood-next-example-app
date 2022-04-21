@@ -7,21 +7,8 @@ import {
   Submit,
 } from '@redwoodjs/forms'
 
-
-
 const WizardForm = (props) => {
   const onSubmit = (data) => {
-
-  
-    
-    
-  
-    
-    
-  
-    
-    
-  
     props.onSave(data, props?.wizard?.id)
   }
 
@@ -34,7 +21,7 @@ const WizardForm = (props) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
-      
+
         <Label
           name="firstName"
           className="rw-label"
@@ -42,15 +29,14 @@ const WizardForm = (props) => {
         >
           First name
         </Label>
-        
-          <TextField
-            name="firstName"
-            defaultValue={props.wizard?.firstName}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
+
+        <TextField
+          name="firstName"
+          defaultValue={props.wizard?.firstName}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
 
         <FieldError name="firstName" className="rw-field-error" />
 
@@ -61,15 +47,14 @@ const WizardForm = (props) => {
         >
           Last name
         </Label>
-        
-          <TextField
-            name="lastName"
-            defaultValue={props.wizard?.lastName}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-            validation={{ required: true }}
-          />
-        
+
+        <TextField
+          name="lastName"
+          defaultValue={props.wizard?.lastName}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
 
         <FieldError name="lastName" className="rw-field-error" />
 
@@ -80,22 +65,18 @@ const WizardForm = (props) => {
         >
           House id
         </Label>
-        
-          <TextField
-            name="houseId"
-            defaultValue={props.wizard?.houseId}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-        
+
+        <TextField
+          name="houseId"
+          defaultValue={props.wizard?.houseId}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+        />
 
         <FieldError name="houseId" className="rw-field-error" />
 
         <div className="rw-button-group">
-          <Submit
-            disabled={props.loading}
-            className="rw-button rw-button-blue"
-          >
+          <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
           </Submit>
         </div>

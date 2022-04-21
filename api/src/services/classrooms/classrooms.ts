@@ -28,13 +28,51 @@ export const createClassroom = ({ input }: CreateClassroomArgs) => {
   })
 }
 
+type UpdateInput = {
+  name?: string
+  wizardIds?: string[]
+  spellIds?: string[]
+  ingredientIds?: string[]
+}
+
 interface UpdateClassroomArgs extends Prisma.ClassroomWhereUniqueInput {
-  input: Prisma.ClassroomUpdateInput
+  input: UpdateInput
 }
 
 export const updateClassroom = ({ id, input }: UpdateClassroomArgs) => {
+  console.log({ input })
+  const { name, wizardIds, spellIds, ingredientIds } = input
+  const data = {}
+  if (name) {
+    data['name'] = name
+  }
+  if (wizardIds) {
+    data['wizards'] = {
+      connect: wizardIds.map((id) => ({
+        id,
+      })),
+    }
+  }
+
+  if (spellIds) {
+    data['spells'] = {
+      connect: spellIds.map((id) => ({
+        id,
+      })),
+    }
+  }
+
+  if (ingredientIds) {
+    data['ingredients'] = {
+      connect: ingredientIds.map((id) => ({
+        id,
+      })),
+    }
+  }
+
+  console.log('CLASSROOM UPDATE', data)
   return db.classroom.update({
-    data: input,
+    data,
     where: { id },
   })
 }

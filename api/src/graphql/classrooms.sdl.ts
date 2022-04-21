@@ -18,6 +18,9 @@ export const schema = gql`
 
   input UpdateClassroomInput {
     name: String
+    wizardIds: [String!]
+    spellIds: [String!]
+    ingredientIds: [String!]
   }
 
   type Mutation {

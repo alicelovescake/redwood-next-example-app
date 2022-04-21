@@ -23,6 +23,7 @@ export const QUERY = gql`
       wizards {
         id
         firstName
+        lastName
       }
     }
     ingredients: ingredients {
@@ -36,6 +37,7 @@ export const QUERY = gql`
     wizards: wizards {
       id
       firstName
+      lastName
     }
   }
 `
@@ -46,7 +48,6 @@ const UPDATE_CLASSROOM_MUTATION = gql`
   ) {
     updateClassroom(id: $id, input: $input) {
       id
-      name
     }
   }
 `
@@ -59,7 +60,7 @@ export const Failure = ({ error }: CellFailureProps) => (
 
 export const Success = (data: CellSuccessProps<EditClassroomById>) => {
   console.log({ data })
-  const [updateClassroom, { loading, error }] = useMutation(
+  const [updateClassroom, { loading }] = useMutation(
     UPDATE_CLASSROOM_MUTATION,
     {
       onCompleted: () => {
@@ -82,12 +83,7 @@ export const Success = (data: CellSuccessProps<EditClassroomById>) => {
         <h2 className="rw-heading rw-heading-secondary">Edit Class</h2>
       </header>
       <div className="rw-segment-main">
-        <ClassroomForm
-          data={data}
-          onSave={onSave}
-          error={error}
-          loading={loading}
-        />
+        <ClassroomForm data={data} onSave={onSave} loading={loading} />
       </div>
     </div>
   )
