@@ -29,13 +29,15 @@ interface CreateClassroomArgs {
   input: CreateInput
 }
 
-export const createClassroom = ({ input }: CreateClassroomArgs) => {
-  return db.classroom.create({
+export const createClassroom = async ({ input }: CreateClassroomArgs) => {
+  const { name, ...data } = input
+  const newClass = await db.classroom.create({
     data: {
-      name: input.name,
-      ...getUpdateOrCreateData('create', input),
+      name,
     },
   })
+
+  return updateClassroom({ id: newClass.id, input: data })
 }
 
 type UpdateInput = {
@@ -50,16 +52,6 @@ interface UpdateClassroomArgs extends Prisma.ClassroomWhereUniqueInput {
 }
 
 export const updateClassroom = ({ id, input }: UpdateClassroomArgs) => {
-  return db.classroom.update({
-    data: getUpdateOrCreateData('connect', input),
-    where: { id },
-  })
-}
-
-const getUpdateOrCreateData = (
-  property: 'connect' | 'create',
-  input: CreateInput | UpdateInput
-) => {
   const { name, wizardIds, spellIds, ingredientIds } = input
   const data = {}
 
@@ -68,24 +60,33 @@ const getUpdateOrCreateData = (
   }
 
   if (wizardIds) {
-    data['wizards'][property] = wizardIds.map((id) => ({
-      id,
-    }))
+    data['wizards'] = {
+      connect: wizardIds.map((id) => ({
+        id,
+      })),
+    }
   }
 
   if (spellIds) {
-    data['spells'][property] = spellIds.map((id) => ({
-      id,
-    }))
+    data['spells'] = {
+      connect: spellIds.map((id) => ({
+        id,
+      })),
+    }
   }
 
   if (ingredientIds) {
-    data['ingredients'][property] = ingredientIds.map((id) => ({
-      id,
-    }))
+    data['ingredients'] = {
+      connect: ingredientIds.map((id) => ({
+        id,
+      })),
+    }
   }
 
-  return data
+  return db.classroom.update({
+    data,
+    where: { id },
+  })
 }
 
 export const deleteClassroom = ({ id }: Prisma.ClassroomWhereUniqueInput) => {

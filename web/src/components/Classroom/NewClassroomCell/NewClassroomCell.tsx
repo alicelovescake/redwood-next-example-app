@@ -1,12 +1,12 @@
 import type { AvailableResources } from 'types/graphql'
-import { CellSuccessProps, useMutation } from '@redwoodjs/web'
+import { CellFailureProps, CellSuccessProps, useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { navigate, routes } from '@redwoodjs/router'
 import ClassroomForm from 'src/components/Classroom/ClassroomForm'
 
 export const QUERY = gql`
   query AvailableResources {
-    ingredients: ingredients {
+    ingredients {
       id
       name
     }
@@ -30,7 +30,13 @@ const CREATE_CLASSROOM_MUTATION = gql`
   }
 `
 
-const NewClassroom = (data: CellSuccessProps<AvailableResources>) => {
+export const Loading = () => <div>Loading...</div>
+
+export const Failure = ({ error }: CellFailureProps) => (
+  <div className="rw-cell-error">{error.message}</div>
+)
+
+export const Success = (data: CellSuccessProps<AvailableResources>) => {
   const [createClassroom, { loading }] = useMutation(
     CREATE_CLASSROOM_MUTATION,
     {
@@ -59,5 +65,3 @@ const NewClassroom = (data: CellSuccessProps<AvailableResources>) => {
     </div>
   )
 }
-
-export default NewClassroom

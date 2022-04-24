@@ -1,4 +1,4 @@
-import NewClassroom from 'src/components/Classroom/NewClassroom'
+import NewClassroom from 'src/components/Classroom/NewClassroomCell'
 
 const NewClassroomPage = () => {
   return <NewClassroom />

@@ -9,7 +9,7 @@ import ClassroomForm from 'src/components/Classroom/ClassroomForm'
 
 export const QUERY = gql`
   query EditClassroomById($id: String!) {
-    classroom: classroom(id: $id) {
+    classroom(id: $id) {
       id
       name
       ingredients {
@@ -26,15 +26,15 @@ export const QUERY = gql`
         lastName
       }
     }
-    ingredients: ingredients {
+    ingredients {
       id
       name
     }
-    spells: spells {
+    spells {
       id
       name
     }
-    wizards: wizards {
+    wizards {
       id
       firstName
       lastName
