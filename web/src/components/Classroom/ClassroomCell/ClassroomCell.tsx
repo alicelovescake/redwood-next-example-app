@@ -16,6 +16,7 @@ export const QUERY = gql`
       }
       wizards {
         firstName
+        lastName
       }
     }
   }

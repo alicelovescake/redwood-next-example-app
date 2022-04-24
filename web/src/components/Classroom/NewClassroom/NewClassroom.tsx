@@ -1,7 +1,26 @@
-import { useMutation } from '@redwoodjs/web'
+import type { AvailableResources } from 'types/graphql'
+import { CellSuccessProps, useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 import { navigate, routes } from '@redwoodjs/router'
 import ClassroomForm from 'src/components/Classroom/ClassroomForm'
+
+export const QUERY = gql`
+  query AvailableResources {
+    ingredients: ingredients {
+      id
+      name
+    }
+    spells: spells {
+      id
+      name
+    }
+    wizards: wizards {
+      id
+      firstName
+      lastName
+    }
+  }
+`
 
 const CREATE_CLASSROOM_MUTATION = gql`
   mutation CreateClassroomMutation($input: CreateClassroomInput!) {
@@ -11,8 +30,8 @@ const CREATE_CLASSROOM_MUTATION = gql`
   }
 `
 
-const NewClassroom = () => {
-  const [createClassroom, { loading, error }] = useMutation(
+const NewClassroom = (data: CellSuccessProps<AvailableResources>) => {
+  const [createClassroom, { loading }] = useMutation(
     CREATE_CLASSROOM_MUTATION,
     {
       onCompleted: () => {
@@ -35,7 +54,7 @@ const NewClassroom = () => {
         <h2 className="rw-heading rw-heading-secondary">New Class</h2>
       </header>
       <div className="rw-segment-main">
-        <ClassroomForm onSave={onSave} loading={loading} error={error} />
+        <ClassroomForm data={data} onSave={onSave} loading={loading} />
       </div>
     </div>
   )

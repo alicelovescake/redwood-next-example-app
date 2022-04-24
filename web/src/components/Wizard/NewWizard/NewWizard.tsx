@@ -12,15 +12,18 @@ const CREATE_WIZARD_MUTATION = gql`
 `
 
 const NewWizard = () => {
-  const [createWizard, { loading, error }] = useMutation(CREATE_WIZARD_MUTATION, {
-    onCompleted: () => {
-      toast.success('Wizard created')
-      navigate(routes.wizards())
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-  })
+  const [createWizard, { loading, error }] = useMutation(
+    CREATE_WIZARD_MUTATION,
+    {
+      onCompleted: () => {
+        toast.success('Wizard created')
+        navigate(routes.wizards())
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      },
+    }
+  )
 
   const onSave = (input) => {
     createWizard({ variables: { input } })

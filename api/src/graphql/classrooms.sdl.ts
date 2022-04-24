@@ -14,6 +14,9 @@ export const schema = gql`
 
   input CreateClassroomInput {
     name: String!
+    wizardIds: [String!]
+    spellIds: [String!]
+    ingredientIds: [String!]
   }
 
   input UpdateClassroomInput {

@@ -10,6 +10,7 @@ type Props = {
   label: string
   placeholder: string
   control: Control
+  name: string
 }
 export const Autocomplete = ({
   defaultValue,
@@ -17,6 +18,7 @@ export const Autocomplete = ({
   label,
   placeholder,
   control,
+  name,
 }: Props) => {
   return (
     <Controller
@@ -35,7 +37,7 @@ export const Autocomplete = ({
           {...props}
         />
       )}
-      name={label}
+      name={name}
       control={control}
     />
   )

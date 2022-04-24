@@ -49,6 +49,9 @@ const ClassroomsList = ({ classrooms }) => {
         <thead>
           <tr>
             <th>Name</th>
+            <th># of Wizards Enrolled</th>
+            <th>Spells Covered In Class</th>
+            <th>Ingredients to prep</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -56,6 +59,16 @@ const ClassroomsList = ({ classrooms }) => {
           {classrooms.map((classroom) => (
             <tr key={classroom.id}>
               <td>{truncate(classroom.name)}</td>
+              <td>{classroom.wizards?.length ?? 0}</td>
+              <td>
+                {classroom.spells?.map((spell) => spell.name).join(', ') ??
+                  'no spells set yet'}
+              </td>
+              <td>
+                {classroom.ingredients
+                  ?.map((ingredient) => ingredient.name)
+                  .join(', ') ?? 'no ingredients set yet'}
+              </td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

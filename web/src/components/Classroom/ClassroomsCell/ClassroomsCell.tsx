@@ -10,6 +10,15 @@ export const QUERY = gql`
     classrooms {
       id
       name
+      ingredients {
+        name
+      }
+      spells {
+        name
+      }
+      wizards {
+        firstName
+      }
     }
   }
 `
@@ -20,10 +29,7 @@ export const Empty = () => {
   return (
     <div className="rw-text-center">
       {'No classrooms yet. '}
-      <Link
-        to={routes.newClassroom()}
-        className="rw-link"
-      >
+      <Link to={routes.newClassroom()} className="rw-link">
         {'Create one?'}
       </Link>
     </div>

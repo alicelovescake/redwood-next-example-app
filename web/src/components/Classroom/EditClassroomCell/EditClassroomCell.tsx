@@ -59,7 +59,6 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = (data: CellSuccessProps<EditClassroomById>) => {
-  console.log({ data })
   const [updateClassroom, { loading }] = useMutation(
     UPDATE_CLASSROOM_MUTATION,
     {

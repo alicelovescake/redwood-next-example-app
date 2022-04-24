@@ -18,13 +18,23 @@ export const classroom = ({ id }: Prisma.ClassroomWhereUniqueInput) => {
   })
 }
 
+type CreateInput = {
+  name: string
+  wizardIds?: string[]
+  spellIds?: string[]
+  ingredientIds?: string[]
+}
+
 interface CreateClassroomArgs {
-  input: Prisma.ClassroomCreateInput
+  input: CreateInput
 }
 
 export const createClassroom = ({ input }: CreateClassroomArgs) => {
   return db.classroom.create({
-    data: input,
+    data: {
+      name: input.name,
+      ...getUpdateOrCreateData('create', input),
+    },
   })
 }
 
@@ -40,41 +50,42 @@ interface UpdateClassroomArgs extends Prisma.ClassroomWhereUniqueInput {
 }
 
 export const updateClassroom = ({ id, input }: UpdateClassroomArgs) => {
-  console.log({ input })
+  return db.classroom.update({
+    data: getUpdateOrCreateData('connect', input),
+    where: { id },
+  })
+}
+
+const getUpdateOrCreateData = (
+  property: 'connect' | 'create',
+  input: CreateInput | UpdateInput
+) => {
   const { name, wizardIds, spellIds, ingredientIds } = input
   const data = {}
+
   if (name) {
     data['name'] = name
   }
+
   if (wizardIds) {
-    data['wizards'] = {
-      connect: wizardIds.map((id) => ({
-        id,
-      })),
-    }
+    data['wizards'][property] = wizardIds.map((id) => ({
+      id,
+    }))
   }
 
   if (spellIds) {
-    data['spells'] = {
-      connect: spellIds.map((id) => ({
-        id,
-      })),
-    }
+    data['spells'][property] = spellIds.map((id) => ({
+      id,
+    }))
   }
 
   if (ingredientIds) {
-    data['ingredients'] = {
-      connect: ingredientIds.map((id) => ({
-        id,
-      })),
-    }
+    data['ingredients'][property] = ingredientIds.map((id) => ({
+      id,
+    }))
   }
 
-  console.log('CLASSROOM UPDATE', data)
-  return db.classroom.update({
-    data,
-    where: { id },
-  })
+  return data
 }
 
 export const deleteClassroom = ({ id }: Prisma.ClassroomWhereUniqueInput) => {

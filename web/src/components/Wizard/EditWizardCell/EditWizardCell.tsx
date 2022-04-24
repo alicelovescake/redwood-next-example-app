@@ -35,15 +35,18 @@ export const Failure = ({ error }: CellFailureProps) => (
 )
 
 export const Success = ({ wizard }: CellSuccessProps<EditWizardById>) => {
-  const [updateWizard, { loading, error }] = useMutation(UPDATE_WIZARD_MUTATION, {
-    onCompleted: () => {
-      toast.success('Wizard updated')
-      navigate(routes.wizards())
-    },
-    onError: (error) => {
-      toast.error(error.message)
-    },
-  })
+  const [updateWizard, { loading, error }] = useMutation(
+    UPDATE_WIZARD_MUTATION,
+    {
+      onCompleted: () => {
+        toast.success('Wizard updated')
+        navigate(routes.wizards())
+      },
+      onError: (error) => {
+        toast.error(error.message)
+      },
+    }
+  )
 
   const onSave = (input, id) => {
     updateWizard({ variables: { id, input } })
@@ -52,10 +55,17 @@ export const Success = ({ wizard }: CellSuccessProps<EditWizardById>) => {
   return (
     <div className="rw-segment">
       <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">Edit Wizard {wizard.id}</h2>
+        <h2 className="rw-heading rw-heading-secondary">
+          Edit Wizard {wizard.id}
+        </h2>
       </header>
       <div className="rw-segment-main">
-        <WizardForm wizard={wizard} onSave={onSave} error={error} loading={loading} />
+        <WizardForm
+          wizard={wizard}
+          onSave={onSave}
+          error={error}
+          loading={loading}
+        />
       </div>
     </div>
   )

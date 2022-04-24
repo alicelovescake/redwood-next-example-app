@@ -45,8 +45,12 @@ const Classroom = ({
               <td>{classroom.name}</td>
             </tr>
             <tr>
-              <th># of Wizards Enrolled</th>
-              <td>{classroom.wizards?.length ?? 0}</td>
+              <th> Wizards Enrolled</th>
+              <td>
+                {classroom.wizards
+                  ?.map((wizard) => `${wizard.firstName} ${wizard.lastName}`)
+                  .join(', ') ?? 'no wizards enrolled yet'}
+              </td>
             </tr>
             <tr>
               <th>Spells Covered In Class</th>
