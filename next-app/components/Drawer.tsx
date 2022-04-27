@@ -7,8 +7,14 @@ import {
   ListItem,
   ListItemText,
 } from '@mui/material'
+import { Options } from '../pages'
 
-export function Drawer() {
+type Props = {
+  options: Options
+  handleOnClick: (option: string) => void
+}
+
+export function Drawer({ options, handleOnClick }: Props) {
   return (
     <MUIDrawer
       sx={{
@@ -25,9 +31,9 @@ export function Drawer() {
       <Toolbar />
       <Divider />
       <List>
-        {['Enroll', 'My Classes', 'My Schoolmates'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
+        {Object.keys(options).map((key, index) => (
+          <ListItem button key={key} onClick={() => handleOnClick(key)}>
+            <ListItemText primary={options[key].label} />
           </ListItem>
         ))}
       </List>

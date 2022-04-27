@@ -8,13 +8,14 @@ import {
   tableCellClasses,
   TableRow,
   TableBody,
+  Button,
 } from '@mui/material'
 import { Classroom } from 'types/graphql'
 
 const StyledTableCell = styled(TableCell)({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: 'darkslategray',
-    color: 'aliceblue',
+    backgroundColor: '#1776d1',
+    color: 'white',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
@@ -23,7 +24,7 @@ const StyledTableCell = styled(TableCell)({
 
 const StyledTableRow = styled(TableRow)({
   '&:nth-of-type(odd)': {
-    backgroundColor: 'gray',
+    backgroundColor: '#cccccc',
   },
   // hide last border
   '&:last-child td, &:last-child th': {
@@ -41,6 +42,7 @@ export function ClassList({ classes }: { classes: Classroom[] }) {
             Spells Covered In Class
           </StyledTableCell>
           <StyledTableCell align="right">Ingredients to prep</StyledTableCell>
+          <StyledTableCell align="right">Action</StyledTableCell>
         </TableHead>
         <TableBody>
           {classes.map((classroom: Classroom) => (
@@ -60,6 +62,9 @@ export function ClassList({ classes }: { classes: Classroom[] }) {
                 {classroom.ingredients
                   ?.map((ingredient) => ingredient?.name)
                   .join(', ') ?? 'no ingredients set yet'}
+              </StyledTableCell>
+              <StyledTableCell align="right">
+                <Button>Enroll now</Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}
