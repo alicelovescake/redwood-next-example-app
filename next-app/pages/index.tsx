@@ -1,7 +1,7 @@
 import { Box, AppBar, Toolbar, Typography } from '@mui/material'
 import { useState, ReactElement, ElementType, ComponentType, FC } from 'react'
 
-import { Drawer, ClassList } from 'components'
+import { Drawer, ClassList, WizardList } from 'components'
 import * as classes from '../graphql-client/classrooms'
 import * as wizards from '../graphql-client/wizards'
 import { Wizard, Classroom } from 'types/graphql'
@@ -31,10 +31,10 @@ export default function Home({ classrooms, wizards }: Props) {
     },
     wizards: {
       label: 'My Schoolmates',
-      component: <ClassList classes={classrooms} />,
+      component: <WizardList wizards={wizards} />,
     },
     sorting: {
-      label: 'Get Sorted',
+      label: 'Sorting Hat',
       component: <ClassList classes={classrooms} />,
     },
   }
