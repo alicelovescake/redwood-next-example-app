@@ -19,6 +19,7 @@
     "rootDirs": [
       "next-app",
       "../api/src",
+      "../web/src",
       "../.redwood/types/mirror/api/src/*",
       "../.redwood/types/mirror/web/src/*",
     ],

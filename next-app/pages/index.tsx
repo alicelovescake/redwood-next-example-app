@@ -1,7 +1,7 @@
 import { Box, AppBar, Toolbar, Typography } from '@mui/material'
-import { useState, ReactElement, ElementType, ComponentType, FC } from 'react'
+import { useState } from 'react'
 
-import { Drawer, ClassList, WizardList } from 'components'
+import { Drawer, ClassList, WizardList, WizardForm } from 'components'
 import * as classes from '../graphql-client/classrooms'
 import * as wizards from '../graphql-client/wizards'
 import { Wizard, Classroom } from 'types/graphql'
@@ -24,7 +24,7 @@ export default function Home({ classrooms, wizards }: Props) {
   const [option, setOption] = useState('enroll')
 
   const SidebarOptions: Options = {
-    enroll: { label: 'Enroll', component: <ClassList classes={classrooms} /> },
+    enroll: { label: 'Enroll', component: <WizardForm /> },
     classes: {
       label: 'Classes Available',
       component: <ClassList classes={classrooms} />,
