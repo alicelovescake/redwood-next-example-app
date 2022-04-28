@@ -51,7 +51,7 @@ export default function Home({ classrooms, wizards }: Props) {
       >
         <Toolbar sx={{ backgroundColor: '#650000' }}>
           <Typography variant="h6" noWrap component="div">
-            Welcome to Hogwarts!
+            Welcome to Hogwarts School of Witchcraft and Wizardry!
           </Typography>
         </Toolbar>
       </AppBar>
