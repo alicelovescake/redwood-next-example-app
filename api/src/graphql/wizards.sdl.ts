@@ -26,7 +26,7 @@ export const schema = gql`
   }
 
   type Mutation {
-    createWizard(input: CreateWizardInput!): Wizard! @requireAuth
+    createWizard(input: CreateWizardInput!): Wizard! @skipAuth
     updateWizard(id: String!, input: UpdateWizardInput!): Wizard! @requireAuth
     deleteWizard(id: String!): Wizard! @requireAuth
   }

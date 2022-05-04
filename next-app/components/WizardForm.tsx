@@ -4,44 +4,57 @@ import {
   FieldError,
   Label,
   TextField,
-  Submit,
+  Controller,
+  useForm,
 } from '@redwoodjs/forms'
 
-import { Stack, Paper, styled, Typography } from '@mui/material'
+import { Stack, Typography, Button } from '@mui/material'
+import * as wizards from '../graphql-client/wizards'
+import { CreateWizardInput } from 'types/graphql'
 
 export const WizardForm = () => {
-  const onSubmit = (data) => {
-    console.log(data)
+  const formMethods = useForm()
+  const onSubmit = async (input: CreateWizardInput) => {
+    await wizards.create(input)
   }
 
   return (
-    <div className="rw-form-wrapper">
-      <Form onSubmit={onSubmit}>
-        <FormError />
-        <Stack spacing={2}>
-          <Typography variant="h5">
-            <Label name="firstName">First name</Label>
-          </Typography>
+    <Form formMethods={formMethods}>
+      <FormError />
+      <Stack spacing={2}>
+        <Typography variant="h5">
+          <Label name="firstName">First name</Label>
+        </Typography>
 
-          <TextField name="firstName" validation={{ required: true }} />
+        <TextField name="firstName" validation={{ required: true }} />
 
-          <FieldError name="firstName" />
-          <Typography variant="h5">
-            <Label
-              name="lastName"
-              className="rw-label"
-              errorClassName="rw-label rw-label-error"
-            >
-              Last name
-            </Label>
-          </Typography>
-          <TextField name="lastName" validation={{ required: true }} />
-          <FieldError name="lastName" />
-        </Stack>
-        <div>
-          <Submit>Save</Submit>
-        </div>
-      </Form>
-    </div>
+        <FieldError name="firstName" />
+        <Typography variant="h5">
+          <Label
+            name="lastName"
+            className="rw-label"
+            errorClassName="rw-label rw-label-error"
+          >
+            Last name
+          </Label>
+        </Typography>
+        <TextField name="lastName" validation={{ required: true }} />
+        <FieldError name="lastName" />
+      </Stack>
+      <Controller
+        name="Button"
+        render={() => (
+          <Button
+            variant="contained"
+            sx={{ my: 5 }}
+            onClick={formMethods.handleSubmit(({ firstName, lastName }) =>
+              onSubmit({ firstName, lastName })
+            )}
+          >
+            Save
+          </Button>
+        )}
+      />
+    </Form>
   )
 }
