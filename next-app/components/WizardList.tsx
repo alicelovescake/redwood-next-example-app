@@ -8,7 +8,7 @@ export function WizardList({ wizards }: { wizards: Wizard[] }) {
       <ImageList
         sx={{ width: 'full', height: 'full' }}
         cols={3}
-        rowHeight={450}
+        rowHeight={500}
       >
         {wizards.map((wizard) => (
           <ImageListItem key={wizard.id}>
