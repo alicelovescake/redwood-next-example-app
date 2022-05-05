@@ -1,3 +1,4 @@
+import { UpdateClassroomInput } from 'types/graphql'
 import { client } from './client'
 
 const QUERY = `
@@ -17,9 +18,22 @@ const QUERY = `
     }
   }
 `
+
+const UPDATE = `
+  mutation($id: String!, $input: UpdateClassroomInput!) {
+    updateClassroom(id: $id, input: $input) {
+      id
+    }
+  }
+`
 export const get = async () => {
   const {
     data: { classrooms },
   } = await client.query(QUERY).toPromise()
   return classrooms
+}
+
+export const update = async (id: string, input: UpdateClassroomInput) => {
+  const { data } = await client.mutation(UPDATE, { id, input }).toPromise()
+  return data.updateClassroom.id
 }

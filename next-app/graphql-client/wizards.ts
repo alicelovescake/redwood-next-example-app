@@ -10,7 +10,7 @@ const QUERY = `
   }
 `
 
-const MUTATE = `
+const CREATE = `
   mutation($input: CreateWizardInput!) {
     createWizard(input: $input){
       id
@@ -26,7 +26,7 @@ export const get = async () => {
 }
 
 export const create = async (input: CreateWizardInput) => {
-  const { data } = await client.mutation(MUTATE, { input }).toPromise()
+  const { data } = await client.mutation(CREATE, { input }).toPromise()
 
-  return data
+  return data.createWizard.id
 }

@@ -19,12 +19,10 @@ type Option = {
 export type Options = Record<string, Option>
 
 export default function Home({ classrooms, wizards }: Props) {
-  console.log({ classrooms, wizards })
-
   const [option, setOption] = useState('enroll')
 
   const SidebarOptions: Options = {
-    enroll: { label: 'Enroll', component: <WizardForm /> },
+    enroll: { label: 'Register', component: <WizardForm /> },
     classes: {
       label: 'Classes Available',
       component: <ClassList classes={classrooms} />,

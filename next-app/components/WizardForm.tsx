@@ -2,7 +2,6 @@ import {
   Form,
   FormError,
   FieldError,
-  Label,
   Controller,
   useForm,
 } from '@redwoodjs/forms'
@@ -10,17 +9,27 @@ import {
 import { Stack, Typography, Button, Box, TextField } from '@mui/material'
 import * as wizards from '../graphql-client/wizards'
 import { CreateWizardInput } from 'types/graphql'
+import { Alert } from './Alert'
+import { useState } from 'react'
 
 export const WizardForm = () => {
+  const [successAlertOn, setSuccessAlertOn] = useState(false)
   const formMethods = useForm()
   const onSubmit = async (input: CreateWizardInput) => {
-    console.log(input)
-    return
-    await wizards.create(input)
+    const id = await wizards.create(input)
+    if (!id) return
+    localStorage.setItem('wizardId', id)
+    setSuccessAlertOn(true)
   }
 
   return (
-    <Box>
+    <Box width={300}>
+      <Alert
+        type="success"
+        text="Success! You are now the newest wizard at Hogwarts"
+        alertOn={successAlertOn}
+        setAlertOn={setSuccessAlertOn}
+      />
       <Typography sx={{ mb: 5 }} variant="h5">
         Register as a New Wizard!
       </Typography>
