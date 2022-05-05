@@ -1,6 +1,6 @@
 import { Wizard } from 'types/graphql'
 import { ProfileCard } from './ProfileCard'
-import { ImageListItem, ImageList, Typography } from '@mui/material'
+import { ImageListItem, ImageList } from '@mui/material'
 
 export function WizardList({ wizards }: { wizards: Wizard[] }) {
   return (

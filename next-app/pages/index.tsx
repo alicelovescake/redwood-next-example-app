@@ -1,14 +1,22 @@
 import { Box, AppBar, Toolbar, Typography } from '@mui/material'
 import { useState } from 'react'
 
-import { Drawer, ClassList, WizardList, WizardForm } from 'components'
+import {
+  Drawer,
+  ClassList,
+  WizardList,
+  WizardForm,
+  HouseList,
+} from 'components'
 import * as classes from '../graphql-client/classrooms'
 import * as wizards from '../graphql-client/wizards'
-import { Wizard, Classroom } from 'types/graphql'
+import * as houses from '../graphql-client/houses'
+import { Wizard, Classroom, House } from 'types/graphql'
 
 type Props = {
   wizards: Wizard[]
   classrooms: Classroom[]
+  houses: House[]
 }
 
 type Option = {
@@ -18,8 +26,9 @@ type Option = {
 
 export type Options = Record<string, Option>
 
-export default function Home({ classrooms, wizards }: Props) {
+export default function Home({ classrooms, wizards, houses }: Props) {
   const [option, setOption] = useState('enroll')
+  console.log(houses)
 
   const SidebarOptions: Options = {
     enroll: { label: 'Register', component: <WizardForm /> },
@@ -33,7 +42,7 @@ export default function Home({ classrooms, wizards }: Props) {
     },
     sorting: {
       label: 'Sorting Hat',
-      component: <ClassList classes={classrooms} />,
+      component: <HouseList houses={houses} />,
     },
   }
 
@@ -68,11 +77,13 @@ export default function Home({ classrooms, wizards }: Props) {
 export async function getStaticProps() {
   const allClasses = await classes.get()
   const allWizards = await wizards.get()
+  const allHouses = await houses.get()
 
   return {
     props: {
       classrooms: allClasses ?? [],
       wizards: allWizards ?? [],
+      houses: allHouses ?? [],
     },
   }
 }
