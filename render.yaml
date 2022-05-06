@@ -13,6 +13,8 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 16
+        key: SKIP_INSTALL_DEPS
+        value: true
     routes:
       - type: rewrite
         source: /.redwood/functions/*
@@ -51,6 +53,8 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+        key: SKIP_INSTALL_DEPS
+        value: true
     routes:
       - type: rewrite
         source: /.redwood/functions/*
