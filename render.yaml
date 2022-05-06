@@ -8,7 +8,6 @@ services:
   - name: redwood-next-example-app-web
     type: web
     env: static
-    plan: free
     buildCommand: yarn rw deploy render web
     staticPublishPath: ./web/dist
     envVars:
@@ -47,7 +46,6 @@ services:
   - name: redwood-next-example-app-next
     type: web
     env: static
-    plan: free
     buildCommand: yarn; yarn run build:next; yarn next export
     staticPublishPath: out
     envVars:
