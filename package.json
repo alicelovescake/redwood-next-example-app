@@ -9,7 +9,9 @@
     ]
   },
   "scripts": {
-    "dev": "concurrently --kill-others \"npx next dev ./next-app -p 3000\" \"yarn rw dev\""
+    "dev": "concurrently --kill-others \"npx next dev ./next-app -p 3000\" \"yarn rw dev\"",
+    "build": "concurrently --kill-others  \"npx next build ./next-app\" \"yarn rw deploy vercel\" ",
+    "build:next": "next build"
   },
   "devDependencies": {
     "@redwoodjs/core": "1.0.2",

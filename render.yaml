@@ -1,0 +1,67 @@
+#####
+# Documentation
+# Redwood: https://render.com/docs/deploy-redwood
+# YAML (all config values): https://render.com/docs/yaml-spec
+#####
+
+services:
+  - name: redwood-next-example-app-web
+    type: web
+    env: static
+    plan: free
+    buildCommand: yarn rw deploy render web
+    staticPublishPath: ./web/dist
+    envVars:
+      - key: NODE_VERSION
+        value: 16
+    routes:
+      - type: rewrite
+        source: /.redwood/functions/*
+        #####
+        # NOTE: replace destination api url after first deploy to Render
+        # example:
+        #   destination: https://myredwoodproject-api.onrender.com/*
+        #####
+        destination: replace_with_api_url/*
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  - name: redwood-next-example-app-api
+    type: web
+    env: node
+    plan: free
+    region: oregon
+    buildCommand: yarn && yarn rw build api
+    startCommand: yarn rw deploy render api
+    envVars:
+      - key: NODE_VERSION
+        value: 16
+      - key: DATABASE_URL
+        value: file:./data/sqlite.db
+    disk:
+      name: sqlite-data
+      mountPath: /opt/render/project/src/api/db/data
+      sizeGB: 1
+
+  - name: redwood-next-example-app-next
+    type: web
+    env: static
+    plan: free
+    buildCommand: yarn; yarn run build:next; yarn next export
+    staticPublishPath: out
+    envVars:
+      - key: NODE_ENV
+        value: production
+    routes:
+      - type: rewrite
+        source: /.redwood/functions/*
+        #####
+        # NOTE: replace destination api url after first deploy to Render
+        # example:
+        #   destination: https://myredwoodproject-api.onrender.com/*
+        #####
+        destination: replace_with_api_url/*
+      - type: rewrite
+        source: /*
+        destination: /index.html
