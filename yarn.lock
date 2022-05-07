@@ -7321,6 +7321,7 @@ __metadata:
   dependencies:
     "@redwoodjs/api": 1.0.2
     "@redwoodjs/graphql-server": 1.0.2
+    graphql-tag: ^2.12.6
   languageName: unknown
   linkType: soft
 
@@ -13754,7 +13755,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-tag@npm:2.12.6, graphql-tag@npm:^2.11.0, graphql-tag@npm:^2.12.3":
+"graphql-tag@npm:2.12.6, graphql-tag@npm:^2.11.0, graphql-tag@npm:^2.12.3, graphql-tag@npm:^2.12.6":
   version: 2.12.6
   resolution: "graphql-tag@npm:2.12.6"
   dependencies:
