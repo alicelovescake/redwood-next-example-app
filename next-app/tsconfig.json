@@ -18,13 +18,8 @@
     "baseUrl": "./",
     "rootDirs": [
       "next-app",
-      "../api/src",
-      "../web/src",
-      "../.redwood/types/mirror/api/src/*",
-      "../.redwood/types/mirror/web/src/*",
     ],
     "paths": {
-      "types/*": ["../web/types/*"],
       "@/pages/*": ["pages/*"],
       "@/public/*": ["public/*"],
     },
@@ -36,6 +31,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "../web/types/*",
   ]
 }
