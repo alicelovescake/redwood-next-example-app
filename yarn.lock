@@ -13781,6 +13781,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"graphql@npm:^16.4.0":
+  version: 16.4.0
+  resolution: "graphql@npm:16.4.0"
+  checksum: e93fbba004a6c121cbd618e060ea8bc672c4e324ee8b7e490245eb8c8a06e06a6806d196c19ce80522a4cf83031ed4bd837de5c2d9fcb5d39e24a586abed6d1e
+  languageName: node
+  linkType: hard
+
 "gzip-size@npm:^6.0.0":
   version: 6.0.0
   resolution: "gzip-size@npm:6.0.0"
@@ -17728,11 +17735,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "next-app@workspace:next-app"
   dependencies:
+    "@emotion/react": ^11.9.0
+    "@emotion/styled": ^11.8.1
+    "@mui/icons-material": ^5.6.2
+    "@mui/material": ^5.6.2
+    "@redwoodjs/forms": 1.0.2
     "@types/node": 17.0.24
     "@types/react": 18.0.5
     "@types/react-dom": 18.0.1
     eslint: 8.13.0
     eslint-config-next: 12.1.5
+    graphql: ^16.4.0
     next: 12.1.5
     react: 17.0.2
     react-dom: 17.0.2
