@@ -1,4 +1,4 @@
-import { Wizard } from '../../web/types/graphql'
+import { Wizard } from 'types/graphql'
 import { ProfileCard } from './ProfileCard'
 import { ImageListItem, ImageList } from '@mui/material'
 

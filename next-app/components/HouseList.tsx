@@ -1,6 +1,6 @@
 import { ImageListItem, ImageList, Button, Stack } from '@mui/material'
 import { useState } from 'react'
-import { House } from '../../web/types/graphql'
+import { House } from 'types/graphql'
 import { HouseCard } from './HouseCard'
 import * as wizards from '../graphql-client/wizards'
 

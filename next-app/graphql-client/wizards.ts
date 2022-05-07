@@ -1,5 +1,5 @@
 import { client } from './client'
-import { CreateWizardInput, UpdateWizardInput } from '../../web/types/graphql'
+import { CreateWizardInput, UpdateWizardInput } from 'types/graphql'
 
 const QUERY = `
   query getWizards {

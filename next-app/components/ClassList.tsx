@@ -12,7 +12,7 @@ import {
   Box,
 } from '@mui/material'
 import { useState } from 'react'
-import { Classroom } from '../../web/types/graphql'
+import { Classroom } from 'types/graphql'
 
 import * as classroom from '../graphql-client/classrooms'
 import { Alert } from '.'
