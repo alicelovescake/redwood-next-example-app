@@ -1,4 +1,4 @@
-import { UpdateClassroomInput } from 'types/graphql'
+import { UpdateClassroomInput } from '../../web/types/graphql'
 import { client } from './client'
 
 const QUERY = `

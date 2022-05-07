@@ -8,7 +8,7 @@ import {
   List,
   ListItem,
 } from '@mui/material'
-import { House } from 'types/graphql'
+import { House } from '../../web/types/graphql'
 
 type Props = {
   selected: boolean

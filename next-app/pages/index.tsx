@@ -11,7 +11,7 @@ import {
 import * as classes from '../graphql-client/classrooms'
 import * as wizards from '../graphql-client/wizards'
 import * as houses from '../graphql-client/houses'
-import { Wizard, Classroom, House } from 'types/graphql'
+import { Wizard, Classroom, House } from '../../web/types/graphql'
 
 type Props = {
   wizards: Wizard[]

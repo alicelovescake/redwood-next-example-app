@@ -1,5 +1,5 @@
 import { Card, CardMedia, CardContent, Typography } from '@mui/material'
-import { Wizard } from 'types/graphql'
+import { Wizard } from '../../web/types/graphql'
 const savedWizards = [
   'Draco-Malfoy',
   'Fred-Weasley',

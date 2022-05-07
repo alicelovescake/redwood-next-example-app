@@ -8,7 +8,7 @@ import {
 
 import { Stack, Typography, Button, Box, TextField } from '@mui/material'
 import * as wizards from '../graphql-client/wizards'
-import { CreateWizardInput } from 'types/graphql'
+import { CreateWizardInput } from '../../web/types/graphql'
 import { Alert } from './Alert'
 import { useState } from 'react'
 
