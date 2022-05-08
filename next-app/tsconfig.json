@@ -19,6 +19,7 @@
       "next-app",
     ],
     "paths": {
+      "types/*": ["./types/*"],
       "@/pages/*": ["pages/*"],
       "@/public/*": ["public/*"],
     },

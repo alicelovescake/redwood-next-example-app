@@ -58,23 +58,6 @@ const WizardForm = (props) => {
 
         <FieldError name="lastName" className="rw-field-error" />
 
-        <Label
-          name="houseId"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          House id
-        </Label>
-
-        <TextField
-          name="houseId"
-          defaultValue={props.wizard?.houseId}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-        />
-
-        <FieldError name="houseId" className="rw-field-error" />
-
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
             Save
