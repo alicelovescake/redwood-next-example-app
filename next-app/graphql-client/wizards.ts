@@ -36,10 +36,10 @@ export const get = async () => {
 export const create = async (input: CreateWizardInput) => {
   const { data } = await client.mutation(CREATE, { input }).toPromise()
 
-  return data.createWizard.id
+  return data?.createWizard.id
 }
 
 export const update = async (id: string, input: UpdateWizardInput) => {
   const { data } = await client.mutation(UPDATE, { id, input }).toPromise()
-  return data.updateWizard.id
+  return data?.updateWizard.id
 }

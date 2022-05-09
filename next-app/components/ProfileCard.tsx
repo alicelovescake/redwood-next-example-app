@@ -18,7 +18,6 @@ export function ProfileCard({ wizard }: { wizard: Wizard }) {
     ? `${wizard.firstName}-${wizard.lastName}`
     : 'New-Wizard'
   const url = `/images/${imageName}.jpeg`
-
   return (
     <Card sx={{ height: '400px', width: '230px', margin: '20px' }}>
       <CardMedia component="img" src={url} height="300" width="100" />

@@ -1,8 +1,20 @@
+import { ImageListItem, ImageList } from '@mui/material'
+import { useEffect, useState } from 'react'
 import { Wizard } from 'types/graphql'
 import { ProfileCard } from './ProfileCard'
-import { ImageListItem, ImageList } from '@mui/material'
+import * as wizards from '../graphql-client/wizards'
 
-export function WizardList({ wizards }: { wizards: Wizard[] }) {
+export function WizardList() {
+  const [allWizards, setAllWizards] = useState<Wizard[]>([])
+
+  useEffect(() => {
+    const fetchWizards = async () => {
+      const allWizards = await wizards.get()
+      setAllWizards(allWizards)
+    }
+    fetchWizards().catch(console.error)
+  }, [])
+
   return (
     <>
       <ImageList
@@ -10,7 +22,7 @@ export function WizardList({ wizards }: { wizards: Wizard[] }) {
         cols={3}
         rowHeight={500}
       >
-        {wizards.map((wizard) => (
+        {allWizards.map((wizard) => (
           <ImageListItem key={wizard.id}>
             <ProfileCard wizard={wizard} />
           </ImageListItem>
