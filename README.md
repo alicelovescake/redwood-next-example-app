@@ -6,7 +6,7 @@ This example app is a school registration system using [Redwood Web](https://red
 
 The composability and flexibility of Redwood allows you to integrate with custom sides like Next.js and take advantage of SSR, ISR, and much more.
 
-View the deployed [Redwood App](redwood-next-example-app-next.vercel.app) and [Next.js App](https://redwood-next-example-app-next.vercel.app/)
+**View the deployed [Redwood App](redwood-next-example-app-next.vercel.app) and [Next.js App](https://redwood-next-example-app-next.vercel.app/)**
 
 ### Example App File Structure
 
