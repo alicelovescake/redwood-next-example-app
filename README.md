@@ -61,6 +61,12 @@ Certain data is seeded from JSON file of houses, ingredients, spells, wizards in
 
 Sorry for the bad design! Most components are styled using [Material UI](https://mui.com/).
 
+### GraphQL Client
+
+On the Redwood `web` side, [Apollo Client](https://www.apollographql.com/docs/react/) is used by default. In this app, Next.js side uses [urql](https://formidable.com/open-source/urql/) as the GraphQL client.
+
+Read more on Redwood's [GraphQL setup](https://redwoodjs.com/docs/graphql).
+
 ### Types
 
 Redwood automatically [generates types](https://redwoodjs.com/docs/typescript#auto-generated-types) for your GraphQL queries, routes, Cells, scenerios, and tests. You can find the generated types in the `redwood/types`, `web/types/graphql.d.ts`, and `api/types/graphql.d.ts` directories.
