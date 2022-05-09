@@ -1,10 +1,12 @@
-# Redwood Next Example App
+# Redwood/Next Example App
 
 ## Welcome to Hogwarts School of Witchcraft and Wizardry! 🧙‍♂️
 
 This example app is a school registration system using [Redwood Web](https://redwoodjs.com/docs/tutorial/chapter1/file-structure#the-web-directory) for admin interface, [Redwood Api](https://redwoodjs.com/docs/tutorial/chapter1/file-structure#the-api-directory) for all backend code, and [Next.js](https://nextjs.org/) for user interface.
 
-The composability and flexibility of Redwood allows to to integrate with custom sides like Next.js to take advantage of SSR, ISR, and much more.
+The composability and flexibility of Redwood allows you to integrate with custom sides like Next.js and take advantage of SSR, ISR, and much more.
+
+View the deployed [Redwood App](redwood-next-example-app-next.vercel.app) and [Next.js App](https://redwood-next-example-app-next.vercel.app/)
 
 ### Example App File Structure
 
@@ -65,7 +67,7 @@ Redwood automatically [generates types](https://redwoodjs.com/docs/typescript#au
 
 To take advantage of the web GraphQL types in your Next.js front end app, there are a few options:
 
-1. Create a type-gen script i.e `scripts/type-gen.sh` that generates types and copies over the types from `web/types/graphql.d.ts` to `next-app/types/graphql.d.ts`.
+1. [Used in this app] Create a type-gen script in `scripts/type-gen.sh` that generates types and copies over the types from `web/types/graphql.d.ts` to `next-app/types/graphql.d.ts`.
 
 2. In your next-app `tsconfig.json`, you can set the following options to allow next-app to pick up types stored in the `web/types/graphql.d.ts` file:
    - `compilerOptions.rootDirs = ["next-app", "web"]`
@@ -75,7 +77,7 @@ To take advantage of the web GraphQL types in your Next.js front end app, there 
 
 - In `next.config.js`: also set `experimental.externalDir = true`. More details [here](https://github.com/vercel/next.js/pull/22867) and [here](https://github.com/vercel/next.js/discussions/26420|Discussion)
 
-Note: All type files are not tracked by git. So you might run into issues during deployment when your components in next-app are trying to import types from web. So you can remove `web/types/graphql.d.ts` from gitignore.
+Note: All type files are not tracked by git. In option 2, you might run into issues during deployment when your components in next-app are trying to import types from web. So you can remove `web/types/graphql.d.ts` from gitignore.
 
 ## Git it Running
 
