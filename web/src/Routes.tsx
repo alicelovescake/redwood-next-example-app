@@ -14,6 +14,7 @@ import ClassroomsLayout from 'src/layouts/ClassroomsLayout'
 const Routes = () => {
   return (
     <Router>
+      <Route path="/signup" page={SignupPage} name="signup" />
       <Route path="/" page={HomePage} name="home" />
       <Set wrap={WizardsLayout}>
         <Route path="/wizards/new" page={WizardNewWizardPage} name="newWizard" />
